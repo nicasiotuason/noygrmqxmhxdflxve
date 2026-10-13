@@ -1,132 +1,226 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Luis – Histology Practical</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f6f0e2"><title>Histo · Luis</title>
 <style>
-body{font-family:system-ui,sans-serif;margin:0;background:#f4f6f8;color:#222}
-header{background:#1f5f8b;color:#fff;padding:8px 10px;position:sticky;top:0;z-index:5}header h1{font-size:1em;margin:0 0 6px}
-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}nav button{padding:7px 2px;font-size:.8em}nav button.on{background:#f5b041;color:#222}
-button{font-size:1em;padding:10px;border:0;border-radius:8px;background:#2d7dd2;color:#fff;cursor:pointer}
-button.alt{background:#666}button.ok{background:#2e9d4a}button.bad{background:#c0392b}
-main{padding:10px;max-width:760px;margin:auto}.card{background:#fff;border-radius:10px;padding:12px;margin-bottom:12px;box-shadow:0 1px 3px #0002}
-img.slide{width:100%;max-height:55vh;object-fit:contain;background:#111;border-radius:8px;margin:4px 0}
-.opts button{display:block;width:100%;margin:6px 0;text-align:left;background:#e8eef5;color:#222}
-.opts button.ok{background:#bfe8c9}.opts button.bad{background:#f3c1bb}
-.hidden{display:none}.small{font-size:.85em;color:#555}select,input,textarea{font-size:1em;padding:8px;width:100%;box-sizing:border-box;margin:4px 0}
-textarea{min-height:130px}.row{display:flex;gap:8px}.row>*{flex:1}.model{background:#eef7ee;padding:10px;border-radius:8px}
-.note{background:#fff6dd;padding:8px;border-radius:8px;font-size:.9em}.timer{font-size:1.4em;font-weight:bold;text-align:center}
-label.chk{display:block;padding:6px 0}h3{margin:.4em 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-table{border-collapse:collapse;width:100%}td{border-bottom:1px solid #eee;padding:4px;vertical-align:top}
+:root{--paper:#f6f0e2;--card:#fffdf7;--ink:#1f2433;--ink2:#5b6275;--blue:#264c8f;--blue2:#e3eaf7;--hl:#fff0a6;--red:#c4332b;--green:#2f8a4c;--rule:#d9e3f2;--line:#e7dfcc;
+--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--sans)}
+body{background-image:radial-gradient(rgba(120,90,40,.05) 1px,transparent 1px),radial-gradient(rgba(120,90,40,.04) 1px,transparent 1px);background-size:7px 7px,13px 13px;background-position:0 0,3px 5px;padding-bottom:84px}
+h1,h2,h3{font-family:var(--serif);font-weight:700;letter-spacing:-.01em;margin:.2em 0 .35em}h1{font-size:1.7em}h2{font-size:1.35em}h3{font-size:1.12em}
+.top{position:sticky;top:0;z-index:10;background:rgba(246,240,226,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:calc(env(safe-area-inset-top) + 10px) 16px 8px;display:flex;align-items:center;gap:10px}
+.top .t{font-family:var(--serif);font-weight:700;font-size:1.15em;flex:1}.top .chip{font-size:.78em;background:var(--hl);padding:3px 9px;border-radius:999px;font-weight:600}
+main{max-width:720px;margin:auto;padding:14px 14px 20px}
+.card{background:var(--card);border-radius:14px;padding:16px;margin:0 0 14px;box-shadow:0 1px 0 rgba(0,0,0,.04),0 6px 18px -10px rgba(60,40,10,.25);border:1px solid #efe6d2;position:relative}
+.ruled{line-height:28px;padding-top:14px;background:repeating-linear-gradient(var(--card) 0 27px,var(--rule) 27px 28px);background-color:var(--card)}
+.ruled::before{content:"";position:absolute;left:34px;top:0;bottom:0;width:1px;background:#f0b8b4;opacity:.7}.ruled>*{position:relative}
+.kicker{font-size:.72em;text-transform:uppercase;letter-spacing:.12em;color:var(--ink2);font-weight:700}
+.muted{color:var(--ink2);font-size:.88em}
+mark,.hl{background:linear-gradient(transparent 45%,var(--hl) 45% 90%,transparent 90%);padding:0 2px}
+button,.btn{font:600 1em var(--sans);border:0;border-radius:12px;padding:12px 16px;background:var(--blue);color:#fff;cursor:pointer;transition:transform .08s,box-shadow .2s;box-shadow:0 2px 0 #1a3769}
+button:active{transform:translateY(1px) scale(.99)}button.ghost{background:transparent;color:var(--blue);box-shadow:inset 0 0 0 1.5px var(--blue)}
+button.soft{background:var(--blue2);color:var(--blue);box-shadow:none}button.ok{background:var(--green);box-shadow:0 2px 0 #1f6236}button.bad{background:var(--red);box-shadow:0 2px 0 #8d211b}
+.row{display:flex;gap:10px}.row>*{flex:1}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:var(--card);border:1px solid #efe6d2;border-radius:14px;padding:14px;text-align:left;color:var(--ink);box-shadow:0 6px 16px -12px rgba(60,40,10,.4)}
+.tile b{display:block;font-family:var(--serif);font-size:1.05em}.tile span{font-size:.82em;color:var(--ink2);font-weight:400}.tile .ic{font-size:1.4em;display:block;margin-bottom:4px}
+.micro{position:relative;border-radius:12px;overflow:hidden;background:#211d17;margin:8px 0;box-shadow:0 0 0 6px #fff,0 0 0 7px #e4dac4,0 10px 20px -12px #000}
+.micro img{display:block;width:100%;max-height:52vh;object-fit:contain}
+.micro .zoom{position:absolute;right:8px;bottom:8px;background:rgba(255,253,247,.9);color:var(--ink);border-radius:999px;padding:5px 10px;font-size:.8em;font-weight:700;box-shadow:none}
+.micro .shuffle{position:absolute;left:8px;bottom:8px;background:rgba(255,253,247,.9);color:var(--ink);border-radius:999px;padding:5px 10px;font-size:.8em;font-weight:700;box-shadow:none}
+.cap{font-size:.75em;color:var(--ink2);margin-top:-2px}
+ul.clean{padding-left:1.1em;margin:.2em 0 .7em}ul.clean li{margin:.15em 0}
+.model{background:#fffbe6;border-left:4px solid #e6c84a;padding:10px 12px;border-radius:8px;font-family:var(--serif);font-size:1.02em}
+.note{background:#fff3f1;border-left:4px solid var(--red);padding:8px 10px;border-radius:8px;font-size:.88em;margin:.5em 0}
+.opts button{display:block;width:100%;margin:8px 0;text-align:left;background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1.5px #e3d8bf;font-weight:500}
+.opts button.ok{background:#e9f6ec;box-shadow:inset 0 0 0 2px var(--green);color:#164d2a}
+.opts button.ok::after{content:" ✓";color:var(--green);font-weight:800}
+.opts button.bad{background:#fdecea;box-shadow:inset 0 0 0 2px var(--red);color:var(--red);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px;animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+.stamp{display:inline-block;font-family:var(--serif);font-weight:800;padding:2px 10px;border-radius:6px;transform:rotate(-3deg);animation:pop .3s}
+.stamp.good{color:var(--green);border:2px solid var(--green)}.stamp.no{color:var(--red);border:2px solid var(--red)}
+@keyframes pop{0%{transform:scale(.4) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(-3deg);opacity:1}}
+.bar{height:8px;background:#ece3cf;border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;background:var(--blue);border-radius:99px;transition:width .4s}
+textarea,select,input[type=text]{font:1em var(--sans);width:100%;padding:12px;border-radius:12px;border:1.5px solid #e3d8bf;background:var(--card);color:var(--ink)}
+textarea{min-height:130px;background:repeating-linear-gradient(var(--card) 0 27px,var(--rule) 27px 28px);line-height:28px;padding-top:6px}
+label.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed #eadfca}label.chk input{width:22px;height:22px;accent-color:var(--green);flex:none;margin-top:1px}
+.flip{perspective:1200px;height:340px;margin:8px 0}.flip .in{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.3,.7,.3,1);transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:18px;overflow:auto}
+.flip .f{display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--serif);font-size:1.3em}.flip .b{transform:rotateY(180deg)}
+.timer{font:800 1.6em var(--serif);text-align:center;font-variant-numeric:tabular-nums}.timer.late{color:var(--red)}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(255,253,247,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+nav.tabs button{flex:1;background:none;box-shadow:none;color:var(--ink2);padding:6px 2px;font-size:.7em;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:2px;border-radius:10px}
+nav.tabs button .i{font-size:1.45em;line-height:1}nav.tabs button.on{color:var(--blue);background:var(--blue2)}
+.ring{width:96px;height:96px;flex:none}.hero{display:flex;gap:16px;align-items:center}
+.big{font:800 2.6em/1 var(--serif);color:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:.9em}td{padding:7px 4px;border-bottom:1px dashed #e8dcc4;vertical-align:top}
+.pill{display:inline-block;font-size:.75em;padding:2px 8px;border-radius:99px;background:#fdecea;color:var(--red);font-weight:700;margin:2px}
+.hidden{display:none!important}.fade{animation:fade .25s}@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#zoomer{position:fixed;inset:0;z-index:50;background:#14110d;touch-action:none;overflow:hidden}#zoomer img{position:absolute;left:50%;top:50%;max-width:none;transform-origin:0 0;user-select:none;-webkit-user-drag:none}
+#zoomer .x{position:absolute;top:calc(env(safe-area-inset-top) + 12px);right:12px;z-index:2;background:var(--card);color:var(--ink);box-shadow:none}
+#zoomer .hint{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#d8cdb3;font-size:.85em}
+a{color:var(--blue)}
 </style></head><body>
-<header><h1>🔬 Histology practical – identify + describe 3 slides</h1><nav>
-<button data-v="study">Study</button><button data-v="describe">Describe it</button><button data-v="mock">⏱ Mock exam</button><button data-v="quiz">Slide quiz</button>
-<button data-v="look">Look-alikes</button><button data-v="theory">Theory</button><button data-v="flash">Flashcards</button><button data-v="plan">Plan</button>
-<button data-v="extra">Extra</button><button data-v="vert">Vertebrae</button><button data-v="log">Scores</button><button data-v="credits">Credits</button></nav></header>
+<div class="top"><div class="t" id="title">Histology</div><span class="chip" id="dleft"></span></div>
 <main id="app"></main>
+<nav class="tabs">
+<button data-v="home"><span class="i">⌂</span>Home</button><button data-v="study"><span class="i">🔬</span>Slides</button>
+<button data-v="practice"><span class="i">✎</span>Practice</button><button data-v="log"><span class="i">◔</span>Progress</button><button data-v="more"><span class="i">☰</span>More</button></nav>
+<div id="zoomer" class="hidden"><button class="x" id="zx">Close ✕</button><img id="zimg" alt=""><div class="hint">Pinch or scroll to zoom · drag to move · double-tap to reset</div></div>
 <script src="data.js"></script><script src="plan.js"></script><script src="config.js"></script>
 <script>
 const $=s=>document.querySelector(s),app=$('#app'),$$=s=>[...document.querySelectorAll(s)];
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[Math.random()*a.length|0];
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const ul=a=>`<ul>${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+const ul=a=>`<ul class="clean">${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
 const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
-// --- scores + spaced repetition ---
+const EXAM=new Date(2026,9,21);const daysLeft=()=>Math.max(0,Math.ceil((EXAM-new Date(new Date().toDateString()))/864e5));
+$('#dleft').textContent=daysLeft()?daysLeft()+' days to exam':'Exam day!';
+// scores + spaced repetition
 function logScore(mode,s,n,detail){const L=get('scores',[]);const r={d:new Date().toISOString(),mode,s,n,detail:detail||''};L.unshift(r);put('scores',L.slice(0,500));
  if(window.SCORE_ENDPOINT){try{fetch(SCORE_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(r)})}catch(e){}}}
-function mark(id,ok){const S=get('srs',{});const r=S[id]||{seen:0,miss:0,w:1};r.seen++;if(ok){r.w=Math.max(1,r.w*0.6)}else{r.miss++;r.w=Math.min(8,r.w*2+1)}S[id]=r;put('srs',S)}
+function mark(id,ok){const S=get('srs',{});const r=S[id]||{seen:0,miss:0,w:2,ok:0};r.seen++;if(ok){r.ok=(r.ok||0)+1;r.w=Math.max(1,r.w*0.6)}else{r.miss++;r.w=Math.min(8,r.w*2+1)}S[id]=r;put('srs',S)}
 const weight=id=>(get('srs',{})[id]||{w:2}).w;
+const mastered=id=>{const r=get('srs',{})[id];return r&&r.seen>=2&&r.w<=1.5};
 function wpick(arr,n){const pool=arr.slice(),out=[];while(out.length<n&&pool.length){const tot=pool.reduce((a,x)=>a+weight(x.id),0);let r=Math.random()*tot,i=0;for(;i<pool.length-1;i++){r-=weight(pool[i].id);if(r<=0)break}out.push(pool.splice(i,1)[0])}return out}
-const src=x=>x.img.includes('course/')?'Course material image (unlabelled)':'Wikimedia Commons, '+esc(x.license)+' (see Credits)';
-const full=x=>`<h3>${esc(x.name)}</h3><div class="small">${esc(x.day)}</div>
-<b>How to recognise it</b>${ul(x.identify)}<b>Structures to label</b>${ul(x.label)}<b>Layers (surface → deep)</b>${ul(x.layers)}
-<div class="model"><b>Model description (say it like this):</b><p>${esc(x.model)}</p></div>${(x.notes||[]).map(n=>`<p class="note">⚠️ ${esc(n)}</p>`).join('')}
-<b>Course atlas (labelled)</b><img class="slide" src="${x.course}" alt="labelled" loading="lazy">
-${(x.more||[]).map(m=>`<b>${esc(m.cap)}</b><img class="slide" src="${m.img}" loading="lazy">`).join('')}
-${x.commons&&x.commons!==x.img?`<b>Another example</b><img class="slide" src="${x.commons}" loading="lazy"><div class="small">Wikimedia Commons, ${esc(x.license)}</div>`:''}`;
-function setOn(v){$$('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v))}
+// micrograph block with random pool + zoom
+const credit=p=>p.course?'Course material':'Wikimedia Commons · '+esc(p.license);
+function micro(x,id){const p=pick(x.pool);return `<div class="micro" id="${id}"><img src="${p.img}" alt="micrograph" data-full="${p.img}"><button class="shuffle" data-sh="${id}">⟳ other image</button><button class="zoom" data-z="${id}">⤢ zoom</button></div><div class="cap" id="${id}c">${credit(p)} · ${x.pool.length} images in pool</div>`}
+function bindMicro(x){$$('[data-sh]').forEach(b=>b.onclick=e=>{e.stopPropagation();const id=b.dataset.sh,img=$('#'+id+' img');let p;do{p=pick(x.pool)}while(x.pool.length>1&&p.img===img.getAttribute('src'));img.src=p.img;$('#'+id+'c').innerHTML=credit(p)+' · '+x.pool.length+' images in pool'});
+ $$('[data-z]').forEach(b=>b.onclick=e=>{e.stopPropagation();zoom($('#'+b.dataset.z+' img').getAttribute('src'))});$$('.micro img').forEach(i=>i.onclick=()=>zoom(i.getAttribute('src')))}
+const plain=(src)=>`<div class="micro"><img src="${src}" loading="lazy" alt=""><button class="zoom" data-zs="${src}">⤢ zoom</button></div>`;
+function bindPlain(){$$('[data-zs]').forEach(b=>b.onclick=()=>zoom(b.dataset.zs));$$('.micro img').forEach(i=>{if(!i.onclick)i.onclick=()=>zoom(i.getAttribute('src'))})}
+// zoomer (pinch, wheel, drag)
+let Z={s:1,x:0,y:0},pts=new Map(),start=null,lastTap=0;
+function zoom(src){const z=$('#zoomer'),im=$('#zimg');im.onload=()=>{const k=Math.min(innerWidth/im.naturalWidth,innerHeight/im.naturalHeight);Z={s:k,x:-im.naturalWidth*k/2,y:-im.naturalHeight*k/2,base:k};apply()};im.src=src;z.classList.remove('hidden')}
+function apply(){$('#zimg').style.transform=`translate(${Z.x}px,${Z.y}px) scale(${Z.s})`}
+$('#zx').onclick=()=>$('#zoomer').classList.add('hidden');
+const zm=$('#zoomer');
+zm.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.15:1/1.15;zoomAt(e.clientX-innerWidth/2,e.clientY-innerHeight/2,f)},{passive:false});
+function zoomAt(cx,cy,f){const ns=Math.min(Math.max(Z.s*f,Z.base*0.8),Z.base*12);f=ns/Z.s;Z.x=cx-(cx-Z.x)*f;Z.y=cy-(cy-Z.y)*f;Z.s=ns;apply()}
+zm.addEventListener('pointerdown',e=>{if(e.target.closest('.x'))return;zm.setPointerCapture(e.pointerId);pts.set(e.pointerId,{x:e.clientX,y:e.clientY});start=null;
+ const now=Date.now();if(pts.size===1&&now-lastTap<300){Z.s=Z.base;Z.x=-$('#zimg').naturalWidth*Z.base/2;Z.y=-$('#zimg').naturalHeight*Z.base/2;apply()}lastTap=now});
+zm.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;const prev=pts.get(e.pointerId);const cur={x:e.clientX,y:e.clientY};
+ if(pts.size===1){Z.x+=cur.x-prev.x;Z.y+=cur.y-prev.y;apply()}else if(pts.size===2){const [a,b]=[...pts.values()];const o=a===prev?b:a;const d0=Math.hypot(prev.x-o.x,prev.y-o.y),d1=Math.hypot(cur.x-o.x,cur.y-o.y);
+ if(d0>0)zoomAt((cur.x+o.x)/2-innerWidth/2,(cur.y+o.y)/2-innerHeight/2,d1/d0)}pts.set(e.pointerId,cur)});
+['pointerup','pointercancel'].forEach(t=>zm.addEventListener(t,e=>pts.delete(e.pointerId)));
+const ring=(pct,label)=>`<svg class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ece3cf" stroke-width="10"/><circle cx="50" cy="50" r="42" fill="none" stroke="#264c8f" stroke-width="10" stroke-linecap="round" stroke-dasharray="${(pct*2.639).toFixed(1)} 264" transform="rotate(-90 50 50)" style="transition:stroke-dasharray .6s"/><text x="50" y="52" text-anchor="middle" font-family="Georgia,serif" font-weight="800" font-size="22" fill="#1f2433">${Math.round(pct)}%</text><text x="50" y="70" text-anchor="middle" font-size="9" fill="#5b6275">${label}</text></svg>`;
+const bar=p=>`<div class="bar"><i style="width:${Math.round(p)}%"></i></div>`;
+function weakList(){const S=get('srs',{});return SLIDES.filter(x=>S[x.id]&&S[x.id].miss>0).sort((a,b)=>S[b.id].w-S[a.id].w)}
+// HOME
+function home(){const m=SLIDES.filter(x=>mastered(x.id)).length,pct=100*m/SLIDES.length,w=weakList().slice(0,5);
+ const today=new Date().toDateString().slice(4,10).replace(' 0',' ');const tp=PLAN.find(p=>p[0].includes(today));const L=get('scores',[]);const lastMock=L.find(r=>r.mode==='Mock exam');
+ app.innerHTML=`<div class="fade"><div class="card"><div class="hero">${ring(pct,'mastered')}<div><div class="kicker">Practical exam · Wed 21 Oct</div><div class="big">${daysLeft()}</div><div class="muted">days left · ${m}/${SLIDES.length} slides mastered</div></div></div></div>
+ <div class="card ruled"><div class="kicker">Today's plan</div><h3>${tp?esc(tp[0]):'Free practice'}</h3><p>${tp?esc(tp[1]):'Do one mock exam and review your weak slides.'}</p></div>
+ <div class="grid2"><button class="tile" data-go="mock"><span class="ic">⏱</span><b>Mock exam</b><span>3 random slides, timed</span></button><button class="tile" data-go="quiz"><span class="ic">🔎</span><b>Slide quiz</b><span>identify 10 micrographs</span></button>
+ <button class="tile" data-go="describe"><span class="ic">✎</span><b>Describe it</b><span>write it like the exam</span></button><button class="tile" data-go="flash"><span class="ic">🃏</span><b>Flashcards</b><span>layers, labels, features</span></button></div>
+ <div class="card" style="margin-top:14px"><div class="kicker">Weak slides</div>${w.length?w.map(x=>`<span class="pill">${esc(x.name)}</span>`).join(''):'<p class="muted">Nothing missed yet — practise to find weak spots.</p>'}
+ ${lastMock?`<p class="muted" style="margin-top:8px">Last mock: <b>${lastMock.s}/${lastMock.n}</b> key points (${Math.round(100*lastMock.s/lastMock.n)}%)</p>`:''}</div></div>`;
+ $$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go))}
 // STUDY
 let k=0;
-function study(){studyShow()}
-function studyShow(){const x=SLIDES[k];app.innerHTML=`<div class="card"><select id="pick">${SLIDES.map((s,i)=>`<option value="${i}" ${i===k?'selected':''}>${i+1}. ${esc(s.name)}</option>`).join('')}</select>
-<img class="slide" src="${x.img}" alt="slide"><div class="small">${src(x)}</div><p><b>1. Identify it</b> – what organ/tissue is this? Then describe it out loud (surface → deep).</p>
-<button id="r">2. Reveal answer, labels, layers + model description</button><div id="ans" class="hidden">${full(x)}</div>
-<div class="row" style="margin-top:8px"><button class="alt" id="p">◀ Prev</button><button id="n">Next ▶</button></div></div>`;
-$('#pick').onchange=e=>{k=+e.target.value;studyShow()};$('#r').onclick=()=>$('#ans').classList.remove('hidden');
-$('#p').onclick=()=>{k=(k-1+SLIDES.length)%SLIDES.length;studyShow()};$('#n').onclick=()=>{k=(k+1)%SLIDES.length;studyShow()}}
+function study(){app.innerHTML=`<div class="fade"><div class="card"><div class="kicker">The 14 exam slides</div><p class="muted">Pick a slide; each shows a random real micrograph from its pool.</p>
+ ${SLIDES.map((s,i)=>`<button class="soft" style="width:100%;text-align:left;margin:5px 0;display:flex;justify-content:space-between" data-i="${i}"><span>${i+1}. ${esc(s.name)}</span><span>${mastered(s.id)?'✓':''}</span></button>`).join('')}</div></div>`;
+ $$('[data-i]').forEach(b=>b.onclick=()=>{k=+b.dataset.i;slide()})}
+function slide(){const x=SLIDES[k];setTitle(x.name);app.innerHTML=`<div class="fade"><div class="card"><div class="kicker">${k+1}/14 · ${esc(x.day)}</div>${micro(x,'m1')}
+<p><b>1.</b> Name it. <b>2.</b> Describe it out loud, surface → deep. Then check.</p><button id="r" style="width:100%">Reveal answer</button></div>
+<div id="ans" class="hidden"><div class="card ruled"><h2>${esc(x.name)}</h2><div class="kicker">How to recognise it</div>${ul(x.identify)}<div class="kicker">Layers · surface → deep</div>${ul(x.layers)}<div class="kicker">Structures to label</div>${ul(x.label)}</div>
+<div class="card"><div class="kicker">Model description — say it like this</div><div class="model">${esc(x.model)}</div>${(x.notes||[]).map(n=>`<div class="note">${esc(n)}</div>`).join('')}</div>
+<div class="card"><div class="kicker">Course atlas (labelled)</div>${plain(x.course)}</div></div>
+<div class="row"><button class="ghost" id="p">← Prev</button><button class="ghost" id="all">All</button><button class="ghost" id="n">Next →</button></div></div>`;
+bindMicro(x);bindPlain();$('#r').onclick=()=>{$('#ans').classList.remove('hidden');$('#r').classList.add('hidden');bindPlain()};
+$('#p').onclick=()=>{k=(k+13)%14;slide();scrollTo(0,0)};$('#n').onclick=()=>{k=(k+1)%14;slide();scrollTo(0,0)};$('#all').onclick=()=>go('study')}
+// PRACTICE HUB
+function practice(){app.innerHTML=`<div class="fade"><div class="grid2">
+${[['mock','⏱','Mock exam','3 random slides · 5 min each'],['describe','✎','Describe it','1 slide, written description'],['quiz','🔎','Slide quiz','10 random micrographs'],['look','⚖','Look-alikes','how to tell apart'],['theory','📚','Theory quiz','tissue types, H&E, microscope'],['flash','🃏','Flashcards','slides or theory'],['vert','🦴','Vertebrae','separate quiz'],['extra','➕','Extra slides','not on exam list']].map(t=>`<button class="tile" data-go="${t[0]}"><span class="ic">${t[1]}</span><b>${t[2]}</b><span>${t[3]}</span></button>`).join('')}</div></div>`;$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go))}
 // DESCRIBE / MOCK
-let D=[],di=0,dsum=0,dtot=0,timed=false,tmr=null,missed=[];
+let D=[],di=0,dsum=0,dtot=0,timed=false,tmr=null,missed=[],dmode='';
 function describe(){timed=false;startD(wpick(SLIDES,1),'Describe it')}
 function mock(){timed=true;startD(wpick(SLIDES,3),'Mock exam')}
-let dmode='';function startD(list,m){D=list;di=0;dsum=0;dtot=0;dmode=m;missed=[];descShow()}
-function descShow(){clearInterval(tmr);if(di>=D.length){logScore(dmode,dsum,dtot,D.map(x=>x.name).join(', ')+(missed.length?' | missed: '+missed.join('; '):''));
- app.innerHTML=`<div class="card"><h2>${dmode}: ${dsum}/${dtot} key points (${Math.round(100*dsum/dtot)}%)</h2>${missed.length?'<b>Missed:</b>'+ul(missed):''}<button id="a">${timed?'New mock exam (3 slides)':'Another slide'}</button></div>`;$('#a').onclick=timed?mock:describe;return}
-const x=D[di];app.innerHTML=`<div class="card"><div class="small">${dmode}${timed?` – slide ${di+1}/3`:''}: identify AND describe histologically</div>${timed?'<div class="timer" id="tm">5:00</div>':''}
-<img class="slide" src="${x.img}" alt="slide"><div class="small">${src(x)}</div>
-<textarea id="t" placeholder="What is it? Then describe from surface → deep: epithelium type, connective tissue, cells, special structures…"></textarea>
-<button id="r">Reveal model answer + checklist</button><div id="ans" class="hidden"><h3>${esc(x.name)}</h3><div class="model"><p>${esc(x.model)}</p></div>
-<b>Tick each key point you got:</b>${x.key.map((c,i)=>`<label class="chk"><input type="checkbox" style="width:auto" data-i="${i}"> ${esc(c)}</label>`).join('')}
-<img class="slide" src="${x.course}" alt="labelled" loading="lazy"><button class="ok" id="n">Save & next</button></div></div>`;
-if(timed){let t=300;tmr=setInterval(()=>{t--;const e=$('#tm');if(!e){clearInterval(tmr);return}e.textContent=(t<0?'-':'')+Math.floor(Math.abs(t)/60)+':'+String(Math.abs(t)%60).padStart(2,'0');if(t<=0)e.style.color='#c0392b'},1000)}
-$('#r').onclick=()=>{clearInterval(tmr);$('#ans').classList.remove('hidden')};
-$('#n').onclick=()=>{const got=$$('#ans input:checked').length;dsum+=got;dtot+=x.key.length;$$('#ans input').forEach((c,i)=>{if(!c.checked)missed.push(x.name+': '+x.key[i])});mark(x.id,got/x.key.length>=0.7);di++;descShow()}}
-// SLIDE QUIZ
+function startD(list,m){D=list;di=0;dsum=0;dtot=0;dmode=m;missed=[];descShow()}
+function descShow(){clearInterval(tmr);if(di>=D.length){const pct=Math.round(100*dsum/dtot);logScore(dmode,dsum,dtot,D.map(x=>x.name).join(', ')+(missed.length?' | missed: '+missed.join('; '):''));
+ app.innerHTML=`<div class="fade card"><div class="hero">${ring(pct,'key points')}<div><h2>${dmode} done</h2><p class="muted">${dsum}/${dtot} key points</p></div></div>${missed.length?'<div class="kicker" style="margin-top:10px">Missed</div>'+ul(missed):''}<button id="a" style="width:100%">${timed?'New mock exam':'Another slide'}</button></div>`;$('#a').onclick=timed?mock:describe;return}
+const x=D[di];app.innerHTML=`<div class="fade"><div class="card"><div class="kicker">${dmode}${timed?` · slide ${di+1} of 3`:''}</div>${timed?`${bar(100*di/3)}<div class="timer" id="tm">5:00</div>`:''}${micro(x,'m1')}
+<textarea id="t" placeholder="What is it? Then describe surface → deep: epithelium, connective tissue, cells, special structures…"></textarea>
+<button id="r" style="width:100%;margin-top:8px">Reveal model answer</button></div>
+<div id="ans" class="hidden"><div class="card"><h2>${esc(x.name)}</h2><div class="model">${esc(x.model)}</div></div>
+<div class="card ruled"><div class="kicker">Tick each key point you got</div>${x.key.map((c,i)=>`<label class="chk"><input type="checkbox" data-i="${i}"><span>${esc(c)}</span></label>`).join('')}</div>
+<div class="card"><div class="kicker">Course atlas</div>${plain(x.course)}</div><button class="ok" id="n" style="width:100%">Save & next →</button></div></div>`;
+bindMicro(x);
+if(timed){let t=300;tmr=setInterval(()=>{t--;const e=$('#tm');if(!e){clearInterval(tmr);return}e.textContent=(t<0?'−':'')+Math.floor(Math.abs(t)/60)+':'+String(Math.abs(t)%60).padStart(2,'0');if(t<=0)e.classList.add('late')},1000)}
+$('#r').onclick=()=>{clearInterval(tmr);$('#ans').classList.remove('hidden');$('#r').classList.add('hidden');bindPlain()};
+$('#n').onclick=()=>{const got=$$('#ans input:checked').length;dsum+=got;dtot+=x.key.length;$$('#ans input').forEach((c,i)=>{if(!c.checked)missed.push(x.name+': '+x.key[i])});mark(x.id,got/x.key.length>=0.7);di++;descShow();scrollTo(0,0)}}
+// QUIZ
 let Q=[],qi=0,qs=0,qm=[];
-function quiz(){Q=wpick(SLIDES,10).map(x=>({t:Math.random()<.6?'img':'feat',x,f:shuf(x.identify).slice(0,2),opts:shuf([x,...shuf(SLIDES.filter(y=>y!==x)).slice(0,3)])}));qi=0;qs=0;qm=[];quizShow()}
-function quizShow(){if(qi>=Q.length){logScore('Slide quiz',qs,Q.length,qm.length?'missed: '+qm.join('; '):'');app.innerHTML=`<div class="card"><h2>Score: ${qs}/${Q.length}</h2>${qm.length?'<b>Missed:</b>'+ul(qm):''}<button id="a">New quiz</button></div>`;$('#a').onclick=quiz;return}
-const q=Q[qi];app.innerHTML=`<div class="card"><div class="small">Q${qi+1}/${Q.length} · score ${qs} · weak slides come up more often</div>
-${q.t==='img'?`<img class="slide" src="${q.x.img}"><p><b>Which slide is this?</b></p>`:`<p><b>Which slide shows:</b></p>${ul(q.f)}`}
-<div class="opts">${q.opts.map((o,j)=>`<button data-j="${j}">${esc(o.name)}</button>`).join('')}</div><div id="ex"></div></div>`;
+function quiz(){Q=wpick(SLIDES,10).map(x=>({t:Math.random()<.75?'img':'feat',x,p:pick(x.pool),f:shuf(x.identify).slice(0,2),opts:shuf([x,...shuf(SLIDES.filter(y=>y!==x)).slice(0,3)])}));qi=0;qs=0;qm=[];quizShow()}
+function quizShow(){if(qi>=Q.length){logScore('Slide quiz',qs,Q.length,qm.length?'missed: '+qm.join('; '):'');app.innerHTML=`<div class="fade card"><div class="hero">${ring(100*qs/Q.length,'correct')}<div><h2>${qs}/${Q.length}</h2><p class="muted">Missed slides come back more often.</p></div></div>${qm.length?ul(qm):''}<button id="a" style="width:100%">New quiz</button></div>`;$('#a').onclick=quiz;return}
+const q=Q[qi];app.innerHTML=`<div class="fade card"><div class="kicker">Question ${qi+1}/${Q.length} · score ${qs}</div>${bar(100*qi/Q.length)}
+${q.t==='img'?`<div class="micro"><img src="${q.p.img}" alt=""><button class="zoom" data-zs="${q.p.img}">⤢ zoom</button></div><div class="cap">${credit(q.p)}</div><h3>Which slide is this?</h3>`:`<h3>Which slide shows…</h3>${ul(q.f)}`}
+<div class="opts">${q.opts.map((o,j)=>`<button data-j="${j}">${esc(o.name)}</button>`).join('')}</div><div id="ex"></div></div>`;bindPlain();
 $$('.opts button').forEach(b=>b.onclick=()=>{const o=q.opts[b.dataset.j],r=o===q.x;if(r)qs++;else qm.push(q.x.name);mark(q.x.id,r);$$('.opts button').forEach(z=>{z.disabled=true;if(q.opts[z.dataset.j]===q.x)z.classList.add('ok')});if(!r)b.classList.add('bad');
-$('#ex').innerHTML=`<p>${r?'✅ Correct':'❌ Not quite'} – <b>${esc(q.x.name)}</b></p><b>Key features</b>${ul(q.x.identify)}${!r?`<p class="small">${esc(o.name)} would show: ${esc(o.identify.join('; '))}</p>`:''}<button id="nx">Next</button>`;$('#nx').onclick=()=>{qi++;quizShow()}})}
+$('#ex').innerHTML=`<p><span class="stamp ${r?'good':'no'}">${r?'Correct!':'Not quite'}</span></p><div class="kicker">${esc(q.x.name)} — key features</div>${ul(q.x.identify)}${!r?`<div class="note">${esc(o.name)} would show: ${esc(o.identify.join('; '))}</div>`:''}<button id="nx" style="width:100%">Next →</button>`;$('#nx').onclick=()=>{qi++;quizShow();scrollTo(0,0)};$('#nx').scrollIntoView({behavior:'smooth',block:'center'})})}
 // LOOK-ALIKES
 let li=0;
-function look(){lookShow()}
-function lookShow(){const L=LOOK[li],a=SLIDES.find(s=>s.id===L.a);app.innerHTML=`<div class="card"><div class="small">Look-alike ${li+1}/${LOOK.length}</div><h3>${esc(L.t)}</h3>
-<div class="two"><div><img class="slide" src="${a.img}"><div class="small">A</div></div>${L.b?`<div><img class="slide" src="${L.b}"><div class="small">B</div></div>`:'<div class="small" style="align-self:center">(no image for the look-alike – not on your list)</div>'}</div>
-<p>Can you say which is which and <b>how you tell them apart</b>?</p><button id="r">Reveal</button><div id="ans" class="hidden"><p>A = <b>${esc(a.name)}</b>${L.bn?`; B = <b>${esc(L.bn)}</b>`:''}</p><div class="model">${esc(L.txt)}</div></div>
-<div class="row" style="margin-top:8px"><button class="alt" id="p">◀</button><button id="n">▶</button></div></div>`;
-$('#r').onclick=()=>$('#ans').classList.remove('hidden');$('#p').onclick=()=>{li=(li-1+LOOK.length)%LOOK.length;lookShow()};$('#n').onclick=()=>{li=(li+1)%LOOK.length;lookShow()}}
+function look(){const L=LOOK[li],a=SLIDES.find(s=>s.id===L.a),bs=SLIDES.find(s=>s.img===L.b);const pa=pick(a.pool),pb=bs?pick(bs.pool):(L.b?{img:L.b}:null);
+app.innerHTML=`<div class="fade card"><div class="kicker">Look-alike ${li+1}/${LOOK.length}</div><h2>${esc(L.t)}</h2>
+<div class="grid2"><div>${plain(pa.img)}<div class="cap">A</div></div>${pb?`<div>${plain(pb.img)}<div class="cap">B</div></div>`:'<div class="muted" style="align-self:center">No image for the look-alike (not on your list)</div>'}</div>
+<p>Which is which — and <span class="hl">how do you tell them apart?</span></p><button id="r" style="width:100%">Reveal</button>
+<div id="ans" class="hidden"><p>A = <b>${esc(a.name)}</b>${L.bn?` · B = <b>${esc(L.bn)}</b>`:''}</p><div class="model">${esc(L.txt)}</div></div>
+<div class="row" style="margin-top:12px"><button class="ghost" id="p">← Prev</button><button class="ghost" id="n">Next →</button></div></div>`;bindPlain();
+$('#r').onclick=()=>{$('#ans').classList.remove('hidden');$('#r').classList.add('hidden')};$('#p').onclick=()=>{li=(li+LOOK.length-1)%LOOK.length;look()};$('#n').onclick=()=>{li=(li+1)%LOOK.length;look()}}
 // THEORY
 let T=[],ti=0,ts=0,tm=[];
 function theory(){T=shuf(TMCQ);ti=0;ts=0;tm=[];thShow()}
-function thShow(){if(ti>=T.length){logScore('Theory quiz',ts,T.length,tm.length?'missed: '+tm.join('; '):'');app.innerHTML=`<div class="card"><h2>Theory: ${ts}/${T.length}</h2><button id="a">Again</button> <button class="alt" id="fc">Theory flashcards</button></div>`;$('#a').onclick=theory;$('#fc').onclick=()=>flash('theory');return}
-const q=T[ti];app.innerHTML=`<div class="card"><div class="small">Theory ${ti+1}/${T.length} · score ${ts} · <a href="#" id="fc">flashcards instead</a></div><p><b>${esc(q.q)}</b></p><div class="opts">${q.o.map((o,j)=>`<button data-j="${j}">${esc(o)}</button>`).join('')}</div><div id="ex"></div></div>`;
-$('#fc').onclick=e=>{e.preventDefault();flash('theory')};
-$$('.opts button').forEach(b=>b.onclick=()=>{const r=+b.dataset.j===q.c;if(r)ts++;else tm.push(q.q);$$('.opts button').forEach(z=>{z.disabled=true;if(+z.dataset.j===q.c)z.classList.add('ok')});if(!r)b.classList.add('bad');$('#ex').innerHTML=`<p>${r?'✅':'❌'} ${esc(q.w)}</p><button id="nx">Next</button>`;$('#nx').onclick=()=>{ti++;thShow()}})}
-// FLASHCARDS
+function thShow(){if(ti>=T.length){logScore('Theory quiz',ts,T.length,tm.length?'missed: '+tm.join('; '):'');app.innerHTML=`<div class="fade card"><div class="hero">${ring(100*ts/T.length,'theory')}<div><h2>${ts}/${T.length}</h2></div></div><div class="row"><button id="a">Again</button><button class="ghost" id="fc">Theory cards</button></div></div>`;$('#a').onclick=theory;$('#fc').onclick=()=>flash('theory');return}
+const q=T[ti];app.innerHTML=`<div class="fade card"><div class="kicker">Theory ${ti+1}/${T.length} · score ${ts}</div>${bar(100*ti/T.length)}<h3>${esc(q.q)}</h3><div class="opts">${q.o.map((o,j)=>`<button data-j="${j}">${esc(o)}</button>`).join('')}</div><div id="ex"></div></div>`;
+$$('.opts button').forEach(b=>b.onclick=()=>{const r=+b.dataset.j===q.c;if(r)ts++;else tm.push(q.q);$$('.opts button').forEach(z=>{z.disabled=true;if(+z.dataset.j===q.c)z.classList.add('ok')});if(!r)b.classList.add('bad');$('#ex').innerHTML=`<p><span class="stamp ${r?'good':'no'}">${r?'Correct!':'Not quite'}</span></p><p>${esc(q.w)}</p><button id="nx" style="width:100%">Next →</button>`;$('#nx').onclick=()=>{ti++;thShow()}})}
+// FLASHCARDS (3D flip)
 let F=[],fi=0,fk=0,fmode='';
 function flash(m){fmode=m==='theory'?'theory':'slides';F=fmode==='theory'?shuf(THEORY).map(t=>({f:t.q,b:'<p>'+esc(t.a)+'</p>'})):
- wpick(SLIDES,SLIDES.length).flatMap(x=>[{x,f:'Layers of: '+x.name,b:ul(x.layers)},{x,f:'Structures to label in: '+x.name,b:ul(x.label)},{x,f:'How do you recognise: '+x.name+'?',b:ul(x.identify)}]).slice(0,15);fi=0;fk=0;flashShow()}
-function flashShow(){if(fi>=F.length){logScore('Flashcards ('+fmode+')',fk,F.length);app.innerHTML=`<div class="card"><h2>Knew ${fk}/${F.length}</h2><button id="a">Again</button> <button class="alt" id="o">${fmode==='theory'?'Slide':'Theory'} cards</button></div>`;$('#a').onclick=()=>flash(fmode);$('#o').onclick=()=>flash(fmode==='theory'?'slides':'theory');return}
-const c=F[fi];app.innerHTML=`<div class="card"><div class="small">${fmode} card ${fi+1}/${F.length} · <a href="#" id="sw">switch to ${fmode==='theory'?'slide':'theory'} cards</a></div><h3>${esc(c.f)}</h3><button id="fl">Flip</button><div id="bk" class="hidden">${c.b}${c.x?`<img class="slide" src="${c.x.course}" loading="lazy">`:''}<div class="row"><button class="bad" id="no">Didn't know</button><button class="ok" id="yes">Knew it</button></div></div></div>`;
-$('#sw').onclick=e=>{e.preventDefault();flash(fmode==='theory'?'slides':'theory')};
-$('#fl').onclick=()=>$('#bk').classList.remove('hidden');$('#yes').onclick=()=>{fk++;if(c.x)mark(c.x.id,true);fi++;flashShow()};$('#no').onclick=()=>{if(c.x)mark(c.x.id,false);fi++;flashShow()}}
-// PLAN
-function plan(){const today=new Date().toDateString().slice(4,10);app.innerHTML=`<div class="card"><h2>Study plan → exam Wed Oct 21</h2><table>${PLAN.map(p=>`<tr style="${p[0].includes(today)?'background:#fff6dd':''}"><td><b>${esc(p[0])}</b></td><td>${esc(p[1])}</td></tr>`).join('')}</table>
-<p class="small">Exam tip: start at 4x to see the whole section and name the organ, then 10x/40x for cells. Describe in order: what it is → surface/lining → layers deep → cells + special structures.</p></div>`}
+ wpick(SLIDES,SLIDES.length).flatMap(x=>[{x,f:'Layers of the '+x.name,b:ul(x.layers)},{x,f:'What do you label in the '+x.name+'?',b:ul(x.label)},{x,f:'How do you recognise the '+x.name+'?',b:ul(x.identify)}]).slice(0,15);fi=0;fk=0;flashShow()}
+function flashShow(){if(fi>=F.length){logScore('Flashcards ('+fmode+')',fk,F.length);app.innerHTML=`<div class="fade card"><div class="hero">${ring(100*fk/F.length,'known')}<div><h2>${fk}/${F.length}</h2></div></div><div class="row"><button id="a">Again</button><button class="ghost" id="o">${fmode==='theory'?'Slide':'Theory'} cards</button></div></div>`;$('#a').onclick=()=>flash(fmode);$('#o').onclick=()=>flash(fmode==='theory'?'slides':'theory');return}
+const c=F[fi];app.innerHTML=`<div class="fade"><div class="row" style="margin-bottom:10px"><button class="${fmode==='slides'?'':'soft'}" id="m1">Slide cards</button><button class="${fmode==='theory'?'':'soft'}" id="m2">Theory cards</button></div>
+<div class="kicker">${fi+1}/${F.length}</div>${bar(100*fi/F.length)}<div class="flip" id="fc"><div class="in"><div class="f card ruled">${esc(c.f)}<div class="muted" style="position:absolute;bottom:12px;left:0;right:0;font-family:var(--sans);font-size:.6em">tap to flip</div></div><div class="b card">${c.b}</div></div></div>
+<div class="row"><button class="bad" id="no">✗ Didn't know</button><button class="ok" id="yes">✓ Knew it</button></div></div>`;
+$('#m1').onclick=()=>flash('slides');$('#m2').onclick=()=>flash('theory');$('#fc').onclick=()=>$('#fc').classList.toggle('on');
+$('#yes').onclick=()=>{fk++;if(c.x)mark(c.x.id,true);fi++;flashShow()};$('#no').onclick=()=>{if(c.x)mark(c.x.id,false);fi++;flashShow()}}
 // EXTRA / VERT
 let E=[],ei=0;
 function extra(){E=shuf(ITEMS);ei=0;extraShow()}
-function extraShow(){const i=E[ei];app.innerHTML=`<div class="card"><div class="small">Extra (not on exam list) · ${ei+1}/${E.length} · ${esc(i.cat)}</div><img class="slide" src="${i.img}"><div class="small">Wikimedia Commons, ${esc(i.license)}</div>
-<button id="r">Reveal</button><div id="ans" class="hidden"><h3>${esc(i.name)}</h3>${ul(i.labels)}<p><b>Function:</b> ${esc(i.fn)}</p></div><div class="row" style="margin-top:8px"><button class="alt" id="p">◀</button><button id="n">▶</button></div></div>`;
+function extraShow(){const i=E[ei];app.innerHTML=`<div class="fade card"><div class="kicker">Extra · not on exam list · ${ei+1}/${E.length}</div>${plain(i.img)}<div class="cap">Wikimedia Commons · ${esc(i.license)}</div>
+<button id="r" style="width:100%">Reveal</button><div id="ans" class="hidden"><h3>${esc(i.name)}</h3>${ul(i.labels)}<p><b>Function:</b> ${esc(i.fn)}</p></div><div class="row" style="margin-top:10px"><button class="ghost" id="p">←</button><button class="ghost" id="n">→</button></div></div>`;bindPlain();
 $('#r').onclick=()=>$('#ans').classList.remove('hidden');$('#p').onclick=()=>{ei=(ei-1+E.length)%E.length;extraShow()};$('#n').onclick=()=>{ei=(ei+1)%E.length;extraShow()}}
 let vi=0,vs=0,vm=[];
 function vert(){vi=0;vs=0;vm=[];vertShow()}
-function vertShow(){if(vi>=VERT.length){logScore('Vertebrae',vs,VERT.length,vm.length?'missed Q'+vm.join(','):'');app.innerHTML=`<div class="card"><h2>Vertebrae: ${vs}/${VERT.length}</h2><button id="a">Retry</button></div>`;$('#a').onclick=vert;return}
-const q=VERT[vi],corr=q.ans.slice(3).trim();app.innerHTML=`<div class="card"><div class="small">Vertebrae quiz · ${vi+1}/${VERT.length} · score ${vs}</div><p><b>${esc(q.q)}</b></p>
-${q.opts.length?`<div class="opts">${q.opts.map(o=>`<button>${esc(o)}</button>`).join('')}</div>`:`<input id="fill" placeholder="Type answer"><button id="chk">Check</button>`}<div id="ex"></div></div>`;
-const show=r=>{$('#ex').innerHTML=`<p>${r===null?'':r?'✅ Correct':'❌ Not quite'}</p><p><b>Answer:</b> ${esc(q.ans)}</p><p>${esc(q.why)}</p>`+(r===null?`<div class="row"><button class="bad" id="no">I was wrong</button><button class="ok" id="yes">I was right</button></div>`:`<button id="nx">Next</button>`);
+function vertShow(){if(vi>=VERT.length){logScore('Vertebrae',vs,VERT.length,vm.length?'missed Q'+vm.join(','):'');app.innerHTML=`<div class="fade card"><div class="hero">${ring(100*vs/VERT.length,'vertebrae')}<div><h2>${vs}/${VERT.length}</h2></div></div><button id="a" style="width:100%">Retry</button></div>`;$('#a').onclick=vert;return}
+const q=VERT[vi],corr=q.ans.slice(3).trim();app.innerHTML=`<div class="fade card"><div class="kicker">Vertebrae · ${vi+1}/${VERT.length} · score ${vs}</div>${bar(100*vi/VERT.length)}<h3>${esc(q.q)}</h3>
+${q.opts.length?`<div class="opts">${q.opts.map(o=>`<button>${esc(o)}</button>`).join('')}</div>`:`<input type="text" id="fill" placeholder="Type your answer"><button id="chk" style="width:100%;margin-top:8px">Check</button>`}<div id="ex"></div></div>`;
+const show=r=>{$('#ex').innerHTML=`${r===null?'':`<p><span class="stamp ${r?'good':'no'}">${r?'Correct!':'Not quite'}</span></p>`}<p><b>Answer:</b> ${esc(q.ans)}</p><p class="muted">${esc(q.why)}</p>`+(r===null?`<div class="row"><button class="bad" id="no">I was wrong</button><button class="ok" id="yes">I was right</button></div>`:`<button id="nx" style="width:100%">Next →</button>`);
  if(r===null){$('#yes').onclick=()=>{vs++;vi++;vertShow()};$('#no').onclick=()=>{vm.push(q.n);vi++;vertShow()}}else{if(r)vs++;else vm.push(q.n);$('#nx').onclick=()=>{vi++;vertShow()}}};
 if(q.opts.length)$$('.opts button').forEach(b=>b.onclick=()=>{const r=b.textContent.trim()===corr;$$('.opts button').forEach(z=>{z.disabled=true;if(z.textContent.trim()===corr)z.classList.add('ok')});if(!r)b.classList.add('bad');show(r)});
 else $('#chk').onclick=()=>show(null)}
-// LOG / CREDITS
-function log(){const L=get('scores',[]),S=get('srs',{});const weak=SLIDES.filter(x=>S[x.id]).sort((a,b)=>S[b.id].w-S[a.id].w).filter(x=>S[x.id].miss>0);
-app.innerHTML=`<div class="card"><h2>Weak slides (shown more often)</h2>${weak.length?`<table>${weak.map(x=>`<tr><td>${esc(x.name)}</td><td>missed ${S[x.id].miss}/${S[x.id].seen}</td></tr>`).join('')}</table>`:'<p class="small">None yet.</p>'}
-<h2>Score log</h2>${L.length?`<table>${L.map(r=>`<tr><td class="small">${esc(new Date(r.d).toLocaleString())}</td><td>${esc(r.mode)}<div class="small">${esc(r.detail)}</div></td><td><b>${r.s}/${r.n}</b></td></tr>`).join('')}</table>`:'<p>No scores yet.</p>'}
-<div class="row"><button class="alt" id="c">Clear log + weak list</button><button id="x">Export scores (copy)</button></div></div>`;
-$('#c').onclick=()=>{if(confirm('Clear all scores?')){localStorage.removeItem('scores');localStorage.removeItem('srs');log()}};
-$('#x').onclick=()=>{const t=JSON.stringify(get('scores',[]));(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>alert('Copied – paste it in a message'),()=>prompt('Copy this:',t))}}
-function credits(){app.innerHTML=`<div class="card"><h2>Credits</h2><p><b>Course material (personal study only, not openly licensed):</b> labelled atlas images and unlabelled crops from the Biology Practicum (Histology block) guide, Physiotherapy 2026-27; trachea, skeletal muscle and thin skin micrographs from the course Histology Seminar.</p>
-<h3>Wikimedia Commons – exam slides</h3>${SLIDES.filter(x=>x.src).map(x=>`<p class="small"><b>${esc(x.name)}</b> – ${esc(x.title)} by ${esc(x.author)} – ${esc(x.license)} – <a href="${esc(x.src)}">${esc(x.src)}</a>${x.id==='s_artery_vein'?' (cropped, labels masked)':''}${x.id==='s_nerve_long'?' (cropped to panel a)':''}</p>`).join('')}
-<h3>Wikimedia Commons – Extra</h3>${ITEMS.map(i=>`<p class="small"><b>${esc(i.name)}</b> – ${esc(i.title)} by ${esc(i.author)} – ${esc(i.license)} – <a href="${esc(i.src)}">${esc(i.src)}</a></p>`).join('')}</div>`}
-const V={study,describe,mock,quiz,look,theory,flash,plan,extra,vert,log,credits};
-$$('nav button').forEach(b=>b.onclick=()=>{setOn(b.dataset.v);V[b.dataset.v]();scrollTo(0,0)});const h=location.hash.slice(1);const v=V[h]?h:'study';setOn(v);V[v]();if(location.search.includes('reveal'))setTimeout(()=>{const r=document.querySelector('#r');if(r)r.click()},50);
+// PROGRESS
+function log(){const L=get('scores',[]),S=get('srs',{});const m=SLIDES.filter(x=>mastered(x.id)).length;
+app.innerHTML=`<div class="fade"><div class="card"><div class="hero">${ring(100*m/14,'mastered')}<div><h2>Your progress</h2><p class="muted">${L.length} sessions logged</p></div></div></div>
+<div class="card"><div class="kicker">Per slide</div><table>${SLIDES.map(x=>{const r=S[x.id];const p=r&&r.seen?100*(r.seen-r.miss)/r.seen:0;return `<tr><td>${esc(x.name)}</td><td style="width:38%">${r?bar(p)+`<span class="muted">${r.seen-r.miss}/${r.seen} right</span>`:'<span class="muted">not tried</span>'}</td></tr>`}).join('')}</table></div>
+<div class="card ruled"><div class="kicker">Score log</div>${L.length?`<table>${L.slice(0,60).map(r=>`<tr><td class="muted">${esc(new Date(r.d).toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}))}</td><td>${esc(r.mode)}${r.detail?`<div class="muted">${esc(r.detail.slice(0,140))}</div>`:''}</td><td><b>${r.s}/${r.n}</b></td></tr>`).join('')}</table>`:'<p class="muted">No scores yet.</p>'}</div>
+<div class="row"><button class="ghost" id="c">Reset</button><button id="x">Export scores</button></div></div>`;
+$('#c').onclick=()=>{if(confirm('Clear all scores and progress?')){localStorage.removeItem('scores');localStorage.removeItem('srs');log()}};
+$('#x').onclick=()=>{const t=JSON.stringify(get('scores',[]));(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>alert('Copied — paste it in a message'),()=>prompt('Copy this:',t))}}
+// MORE
+function more(){app.innerHTML=`<div class="fade"><div class="grid2"><button class="tile" data-go="plan"><span class="ic">🗓</span><b>Study plan</b><span>day by day to Oct 21</span></button><button class="tile" data-go="credits"><span class="ic">©</span><b>Credits</b><span>image sources</span></button><button class="tile" data-go="vert"><span class="ic">🦴</span><b>Vertebrae</b><span>quiz</span></button><button class="tile" data-go="extra"><span class="ic">➕</span><b>Extra slides</b><span>generic cells & tissues</span></button></div></div>`;$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go))}
+function plan(){const today=new Date().toDateString().slice(4,10).replace(' 0',' ');app.innerHTML=`<div class="fade card ruled"><h2>Study plan</h2>${PLAN.map(p=>`<div style="padding:8px 0;border-bottom:1px dashed #e3d8bf;${p[0].includes(today)?'background:linear-gradient(transparent 0,var(--hl) 0);margin:0 -8px;padding:8px':''}"><b>${esc(p[0])}</b><br>${esc(p[1])}</div>`).join('')}
+<p class="muted" style="margin-top:10px">At the microscope: start at 4x, name the organ, then 10x/40x. Describe: what it is → surface/lining → layers deep → cells & special structures.</p></div>`}
+function credits(){const all=SLIDES.flatMap(x=>x.pool.filter(p=>!p.course).map(p=>({...p,s:x.name})));
+app.innerHTML=`<div class="fade card"><h2>Credits</h2><p><b>Course material</b> (personal study only, not openly licensed): labelled atlas and unlabelled crops from the Biology Practicum (Histology block) guide, Physiotherapy 2026-27, and micrographs from the course Histology Seminar.</p>
+<div class="kicker">Wikimedia Commons micrographs (${all.length})</div>${all.map(p=>`<p class="muted"><b>${esc(p.s)}</b> — ${esc(p.title)} · ${esc(p.author)} · ${esc(p.license)} · <a href="${esc(p.src)}">source</a></p>`).join('')}
+<div class="kicker">Extra slides</div>${ITEMS.map(i=>`<p class="muted"><b>${esc(i.name)}</b> — ${esc(i.title)} · ${esc(i.author)} · ${esc(i.license)} · <a href="${esc(i.src)}">source</a></p>`).join('')}</div>`}
+const V={home,study,practice,log,more,describe,mock,quiz,look,theory,flash,extra,vert,plan,credits};
+const TAB={home:'home',study:'study',practice:'practice',describe:'practice',mock:'practice',quiz:'practice',look:'practice',theory:'practice',flash:'practice',log:'log',more:'more',extra:'more',vert:'more',plan:'more',credits:'more'};
+const TITLES={home:'Histology',study:'Exam slides',practice:'Practice',log:'Progress',more:'More',describe:'Describe it',mock:'Mock exam',quiz:'Slide quiz',look:'Look-alikes',theory:'Theory',flash:'Flashcards',extra:'Extra slides',vert:'Vertebrae',plan:'Study plan',credits:'Credits'};
+function setTitle(t){$('#title').textContent=t}
+function go(v){clearInterval(tmr);$$('nav.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===TAB[v]));setTitle(TITLES[v]);V[v]();scrollTo(0,0);history.replaceState(null,'','#'+v)}
+$$('nav.tabs button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js');
+const h=location.hash.slice(1);go(V[h]?h:'home');
 </script></body></html>
