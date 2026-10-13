@@ -222,3 +222,6 @@ Modified: artery/vein OpenStax crop with labels masked; 3 eyepiece photos (large
 | Hyaline cartilage | images/hyaline_cartilage.jpg | Catherine A. Bautista, Hee Jun Park, Courtney M. Mazur, Roy K. Aaron, Bahar Bilgen | CC0 | https://commons.wikimedia.org/wiki/File:Histology_of_articular_cartilage_zones.jpg |
 | Elastic cartilage | images/elastic_cartilage.jpg | Berkshire Community College  Bioscience Image Library | CC0 | https://commons.wikimedia.org/wiki/File:Connective_Tissue_Elastic_Cartilage_(41812804042).jpg |
 | Fibrocartilage | images/fibrocartilage.jpg | Berkshire Community College  Bioscience Image Library | CC0 | https://commons.wikimedia.org/wiki/File:Connective_Tissue_Fibrocartilage_(27988651538).jpg |
+
+---
+**13 Oct 2026 examiner review:** 30 images listed in `exclude.json` (pathology, non-H&E stains, wrong or ambiguous tissue) were removed from the identify pools and are no longer used for quizzes. See ../REVIEW.md.
